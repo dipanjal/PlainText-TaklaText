@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Takla Text Converter</title>
+</head>
+<body>
+<style type="text/css">
+	textarea{
+		color: #0090ff;
+		font-size: 15px;
+	}
+</style>
+<center>
+<img src="pic_bulboff.gif" id="bulb" width="50"><br>
+<h3 id="h3"><b>Takla Converter</b></h3>
+<textarea autofocus rows="10" cols="50" placeholder="Paste Your Text" id="plaintext"></textarea><br>
+<input type="button" id="btn" value="Convert" onclick="enable()" ><br>
+<textarea  id="taklatext" rows="4" cols="50" hidden></textarea>
+</center>
+
+
+
+<script>
+    var flag=false;
+    startEffect();
+    function startEffect()
+    {
+        if(document.all||document.getElementById)
+        {
+            flash=setInterval("op()",900);	
+        }
+    }
+        function op()
+        {
+            if(!flag)
+            {
+                document.getElementById('bulb').src="pic_bulbon.gif";
+                //document.getElementById('btn').src="on.png"
+                flag=true;
+            }
+            else
+            {
+                document.getElementById('bulb').src="pic_bulboff.gif";
+                //document.getElementById('btn').src="off.png"
+                flag=false;
+            }
+        }
+</script>
+
+
+
+<script type="text/javascript">
+	function enable()
+	{
+		document.getElementById("taklatext").hidden=false;
+		var plainText=document.getElementById("plaintext").value;
+		var plainArr=plainText.split("");
+		var taklaText=[];
+		for(var index=0;index<plainArr.length;index++)
+		{
+				if(plainArr[index]==="e")
+				{
+					plainArr[index]="a";
+				}
+				if(plainArr[index]==="i")
+				{
+					plainArr[index]="e";
+				}
+				if(plainArr[index]==="h")
+				{
+					plainArr[index]="";
+				}
+				if(plainArr[index]==="j")
+				{
+					plainArr[index]="g";
+				}
+				if(plainArr[index]==="o")
+				{
+					//plainArr[index]="a";
+				}
+				if(plainArr[index]==="y")
+				{
+					plainArr[index]="i";
+				}
+				if(plainArr[index]==="c" && plainArr[index+1]===plainArr[index])
+				{
+					plainArr[index]="s";
+					plainArr[index+1]="s";
+				}
+		}
+		document.getElementById("taklatext").innerHTML=plainArr.join("");
+	}
+</script>
+
+</b>
+</body>
+</html>

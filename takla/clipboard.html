@@ -1,0 +1,14 @@
+<html>
+<input id=password value="MY TEST">
+<input type="button" name="" id=copy_btn value="copy" onclick="clickListener()">
+
+<script type="text/javascript">
+    function clickListener() 
+    {
+        document.getElementById('password').select();
+        document.execCommand('copy');
+    }
+
+//document.getElementById('copy_btn').addEventListener('click', clickListener);
+</script>
+</html>
